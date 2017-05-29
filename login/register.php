@@ -3,10 +3,6 @@
     E envia uma mensagem de email de confirmação de conta
  
 
-// ativa essas session variables para serem usadas em alguma pagina
-$_SESSION['email'] = $_POST['email'];
-$_SESSION['first_name'] = $_POST['firstname'];
-$_SESSION['last_name'] = $_POST['lastname'];
 */
 // proteção contra sql injection
 $name = $mysqli->escape_string($_POST['name']);
@@ -41,7 +37,6 @@ else { // username e email disponíveis
 
     // adiciona o usuario ao banco
     if ( $mysqli->query($sql) ){
-
         $_SESSION['logged_in'] = true; // pra saber que o usuário está logado
         $_SESSION['message'] = "Conta criada com sucesso!";
         header("location: success.php");
@@ -53,3 +48,4 @@ else { // username e email disponíveis
     }
 
 }
+

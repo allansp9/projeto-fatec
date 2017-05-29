@@ -24,8 +24,12 @@
     </div>
 
     <div class="container">
-      <div id="movies" class="row"></div>
+      <div id="movies" class="row">
+          
+      </div>
     </div>
+    <br>
+    <a href="../login/logout.php">Sair</a>
 
 
 <?php include '../includes/footer.php'; ?>
