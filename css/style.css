@@ -23,7 +23,8 @@ nav.navbar-default {
 
 .navbar-brand {
     font-family: 'Bungee', cursive;
-    color:white!important;
+    color: white!important;
+  
 }
 .wrapper{
     /*height:700px;*/
@@ -31,6 +32,7 @@ nav.navbar-default {
     display:flex;
     flex-direction: column;
     justify-content:space-between;
+    align-content:center;
 }
 
 div.jumbotron{
@@ -52,7 +54,7 @@ h1{
 
 /*thumbnails*/
 #output .col-md-3 .well{
-    height:340px;
+    height:320px;
     background-color: #2e4052;
 }
 

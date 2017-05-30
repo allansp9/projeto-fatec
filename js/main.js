@@ -223,27 +223,23 @@ function getAtor(){
     };
 
     $.ajax(settings).done(function (response) {
-        var ator = response;
-
-        var output =`
+         var output =`
         <div class="row ator">
             <div class="col-md-6">
-                <img src="https://image.tmdb.org/t/p/w500/${ator.profile_path}">
+                <img src="https://image.tmdb.org/t/p/w500/${response.profile_path}">
             </div>
             <div class="col-md-6">
-                <h2 class="text-center">${ator.name}</h2>
+                <h2 class="text-center">${response.name}</h2>
                 <div class="well">
-                    <h1 class="text-center">Biografia</h1>
-                        ${ator.biography}
+                    <h3 class="text-center">Biografia</h3>
+                        ${response.biography}
                     <hr>
                 </div>
             </div>
+            <a class="btn btn-default" href="../views/index.php">Voltar</a>
         </div>
-
-        <h2>Fotos:</h2>
         `;
         $('#ator').html(output);
-        //$('#ator').append(fotos);
     });
 }
 

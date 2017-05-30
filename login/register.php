@@ -37,6 +37,7 @@ else { // username e email disponíveis
 
     // adiciona o usuario ao banco
     if ( $mysqli->query($sql) ){
+        $_SESSION['name'] = $name;
         $_SESSION['logged_in'] = true; // pra saber que o usuário está logado
         $_SESSION['message'] = "Conta criada com sucesso!";
         header("location: success.php");
