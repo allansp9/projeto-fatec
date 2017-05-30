@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     $('#searchForm').keyup(function(e){
-        var searchText = $('#searchForm');
+        var searchText = e.target.value;
         var searchParam = $('#searchParam').val();
         e.preventDefault();
         
@@ -34,37 +34,6 @@ $(document).ready(function(){
         }
     });
 
-});
-
-//adiciona o filme aos assistidos
-$('#assistido').click(function(){
-    var movieId = sessionStorage.getItem('movieId');
-    
-    var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "https://api.themoviedb.org/3/movie/"+movieId+"?api_key=2657b90452d2f9814a444d1074c32cab&language=en-US",
-        "method": "GET",
-        "headers": {},
-        "data": "{}"
-    };
-    
-    $.ajax(settings).done(function (response) {
-        var movie = response;
-        var movie_id = movie.id;
-        var movie_poster = movie.poster_path;
-        var movie_name = movie.title;
-        var watched;
-        if ($('#assistido').is(':checked')){
-            watched = true;
-        }
-        else{
-            watched = false;
-        }
-        $.post('../model/data.php', {movie_id:movie_id, movie_poster:movie_poster, movie_name:movie_name, watched:watched}, function(data){
-            console.log(data);
-        });
-    });
 });
 
 function getId(id){
@@ -108,12 +77,6 @@ function getAtor(){
           </div>
         </div>
       `;
-        $('#ator').html(output);
-        $.post('../model/data.php', {ator_id:ator_id, movie_poster:ator_profile, movie_name:ator_name}, function(data){
-            console.log(data);
-        });
-
-   
     });
 }
 
