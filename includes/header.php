@@ -1,3 +1,10 @@
+<?php session_start(); ?>
+<?php require '../login/db.php'; ?>
+<?php
+    if ( $_SESSION['logged_in'] != 1 ) {
+        header("location: ../login/index.php");    
+    }
+?>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -8,9 +15,6 @@
     <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet"> 
 </head>
 <body>
-<?php session_start(); ?>
-<?php require '../login/db.php'; ?>
-
 <div class="wrapper">
   <nav class="navbar navbar-default">
       <div class="container">

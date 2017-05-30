@@ -39,13 +39,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
       <div class="tab-content">
 
          <div id="login">
-          <h1>Bem Vindo!</h1>
+          <h1>Bem vindo!</h1>
 
           <form action="index.php" method="post" autocomplete="off">
 
             <div class="field-wrap">
             <label>
-              Usuario<span class="req">*</span>
+              Usuário<span class="req">*</span>
             </label>
             <input type="text" required autocomplete="off" name="username"/>
           </div>

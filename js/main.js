@@ -103,7 +103,9 @@ function getFilme(){
         var movie_id = movie.id;
         var movie_poster = movie.poster_path;
         var movie_name = movie.title;
-
+        var movie_genres = movie.genres;
+        var cada_genero;
+        
         var output =`
         <div class="row ator">
             <div class="col-sm-8 col-md-6">
@@ -115,10 +117,18 @@ function getFilme(){
                     <h3>Sumário</h3>
                     ${movie.overview}
                     <hr>
+                    <p>Gêneros: 
+            `;
+        $.each(movie_genres, (index, genre) => {
+            output += `${genre.name}, `;
+        });
+        output +=`
+                </p>
                 </div>
             </div>
+            <a class="btn btn-default" href="../views/index.php">Voltar</a>
         </div>
-      `;
+        `;
         $('#movie').html(output);
         $.post('../model/data.php', {movie_id:movie_id, movie_poster:movie_poster, movie_name:movie_name}, function(data){
             console.log(data);
