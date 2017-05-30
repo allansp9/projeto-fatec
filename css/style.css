@@ -21,7 +21,7 @@ nav.navbar-default {
 }
 
 div.jumbotron{
-    
+    margin-left:25px;
 }
 
 section.container{
@@ -41,8 +41,6 @@ h1.filmdb{
 /*thumbnails*/
 #output .col-md-3 .well{
     height:390px;
-    background-color:inherit;
-    border: none;
 }
 
 #output .col-md-3 img{

@@ -34,12 +34,19 @@ $(document).ready(function(){
                 var data = response.results;
                 var output = '';
                 $.each(data, (index, coisa) => {
+                    var poster;
                     if (searchParam == "movie"){
+                        if (coisa.poster_path == null){
+                            poster = "<img src='../img/temp.jpg' alt='poster'/>";
+                        }
+                        else {
+                            poster = `<img src='https://image.tmdb.org/t/p/w500/${coisa.poster_path}' alt='poster' />`;
+                        }                        
                         output += `
                             <div class="col-md-3">
                                 <div class="text-center well">
                                     <a onclick="getFilmeId('${coisa.id}')" href="#">
-                                        <img src="https://image.tmdb.org/t/p/w500/${coisa.poster_path}">
+                                        ${poster}
                                         <h5>${coisa.title}</h5>
                                      </a>
                                 </div>
@@ -47,11 +54,17 @@ $(document).ready(function(){
                         `;
                     }
                     else{
+                        if (coisa.profile_path === ''){
+                            poster = `<img src='../img/temp.jpg' alt='poster'/>`;
+                        }
+                        else {
+                            poster = `<img src='https://image.tmdb.org/t/p/w500/${coisa.poster_path}' alt='poster' />`;
+                        } 
                         output += `
                             <div class="col-md-3">
                                 <div class="text-center well">
                                     <a onclick="getAtorId('${coisa.id}')" href="#">
-                                        <img src="https://image.tmdb.org/t/p/w500/${coisa.profile_path}">
+                                        ${poster}
                                         <h5>${coisa.name}</h5>
                                     </a>
                                 </div>
@@ -90,7 +103,7 @@ function getFilme(){
         var movie_id = movie.id;
         var movie_poster = movie.poster_path;
         var movie_name = movie.title;
-        
+
         var output =`
         <div class="row">
           <div class="col-md-4">
