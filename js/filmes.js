@@ -8,7 +8,7 @@ $(document).ready(function(){
         var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "https://api.themoviedb.org/3/search/"+searchParam+"?api_key=2657b90452d2f9814a444d1074c32cab&language=en-US&query="+searchText+"&page=1&include_adult=false",
+        "url": "https://api.themoviedb.org/3/search/"+searchParam+"?api_key=2657b90452d2f9814a444d1074c32cab&query="+searchText+"&page=1&include_adult=false",
         "method": "GET",
         "headers": {},
         "data": "{}"
@@ -16,29 +16,43 @@ $(document).ready(function(){
         
         if ($.trim(searchText)!= ''){
             $.ajax(settings).done(function(response) {
-                var movies = response.results;
+                var data = response.results;
                 var output = '';
-                $.each(movies, (index, movie) => {
-                    output += `
-                        <div class="col-md-3">
-                            <div class="well text-center">
-                                <img src="https://image.tmdb.org/t/p/w154/${movie.poster_path}">
-                                <h5>${movie.title}</h5>
-                                <a onclick="getId('${movie.id}')" class="btn btn-primary" href="#">Movie Details</a>
+                $.each(data, (index, coisa) => {
+                    if (searchParam == "movie"){
+                        output += `
+                            <div class="col-md-3">
+                                <div class="well text-center">
+                                    <img src="https://image.tmdb.org/t/p/w154/${coisa.poster_path}">
+                                    <h5>${coisa.title}</h5>
+                                    <a onclick="getFilmeId('${coisa.id}')" class="btn btn-primary" href="#">Movie Details</a>
+                                </div>
                             </div>
-                        </div>
-                    `;
+                        `;
+                    }
+                    else{
+                        output += `
+                            <div class="col-md-3">
+                                <div class="well text-center">
+                                    <img src="https://image.tmdb.org/t/p/w154/${coisa.profile_path}">
+                                    <h5>${coisa.name}</h5>
+                                    <a onclick="getFilmeId('${coisa.id}')" class="btn btn-primary" href="#">Movie Details</a>
+                                </div>
+                            </div>
+                        `;
+                    }
+
                 });
-                $('#movies').html(output);
+                $('#output').html(output);
             });
         }
     });
 
 });
 
-function getId(id){
+function getFilmeId(id){
     sessionStorage.setItem('movieId', id);
-    window.location = '../views/detalhes.php?id='+id;
+    window.location = '../views/filme.php?id='+id;
     return false;
 }
 
@@ -83,6 +97,50 @@ function getFilme(){
         });
 
    
+    });
+}
+
+function getAtorId(id){
+    sessionStorage.setItem('atorId', id);
+    window.location = '../views/ator.php?id='+id;
+    return false;
+}
+
+function getAtor(){
+    var atorId = sessionStorage.getItem('atorId');
+    
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://api.themoviedb.org/3/person/"+atorId+"?api_key=2657b90452d2f9814a444d1074c32cab&language=en-US",
+        "method": "GET",
+        "headers": {},
+        "data": "{}"
+    };
+
+    $.ajax(settings).done(function (response) {
+        var ator = response;
+        var ator_id = ator.id;
+        var ator_profile = ator.profile_path;
+        var ator_name = ator.title;
+        
+        var output =`
+        <div class="row">
+          <div class="col-md-4">
+            <img src="https://image.tmdb.org/t/p/w500/${ator.profile_path}">
+          </div>
+          <div class="col-md-8">
+            <h2>${ator.name}</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="well">
+            <h3>Plot</h3>
+            ${ator.biography}
+            <hr>
+          </div>
+        </div>
+      `;
     });
 }
 

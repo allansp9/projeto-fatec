@@ -28,7 +28,7 @@
     </div>
 
     <div class="container">
-      <div id="movies" class="row">
+      <div id="output" class="row">
           
       </div>
     </div>
