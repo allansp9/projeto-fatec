@@ -4,13 +4,26 @@ html, body {
     padding:0;
     box-sizing:border-box;
     color: white;
+    font-family: 'Rubik', sans-serif;
+    
+}
+h5{
+    color:white;
 }
 
 nav.navbar-default {
     background-color: #2e4052;
     border:none;
     border-radius:none;
-    color: white;
+    
+}
+.navbar-default li a{
+    color: white!important;
+}
+
+.navbar-brand {
+    font-family: 'Bungee', cursive;
+    color:white!important;
 }
 .wrapper{
     /*height:700px;*/
@@ -22,10 +35,7 @@ nav.navbar-default {
 
 div.jumbotron{
     margin-left:25px;
-}
-
-section.container{
-    
+    background-color:#ffc857;
 }
 
 select#searchParam{
@@ -33,14 +43,17 @@ select#searchParam{
     width:300px;
 }
 
-h1.filmdb{
+h1{
     font-size: 60px;
+    font-family: 'Bungee', cursive;
+    color:#ffc857;
 }
 
 
 /*thumbnails*/
 #output .col-md-3 .well{
-    height:390px;
+    height:340px;
+    background-color: #2e4052;
 }
 
 #output .col-md-3 img{
@@ -49,7 +62,23 @@ h1.filmdb{
 
 .wrapper > footer{
     background-color: #2e4052;
-    height:200px;
+    height:130px;
     /*position:relative;*/
     width:100%;
+}
+
+.tmdb-logo{
+    margin: 15px 15px;
+}
+
+footer>p{
+    margin: 15px 0 0 15px;
+    float:left;
+
+
+}
+
+footer>img{
+    width:230px;
+    height:auto;
 }

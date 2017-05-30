@@ -54,11 +54,11 @@ $(document).ready(function(){
                         `;
                     }
                     else{
-                        if (coisa.profile_path === ''){
+                        if (coisa.profile_path == null){
                             poster = `<img src='../img/temp.jpg' alt='poster'/>`;
                         }
                         else {
-                            poster = `<img src='https://image.tmdb.org/t/p/w500/${coisa.poster_path}' alt='poster' />`;
+                            poster = `<img src='https://image.tmdb.org/t/p/w500/${coisa.profile_path}' alt='poster' />`;
                         } 
                         output += `
                             <div class="col-md-3">

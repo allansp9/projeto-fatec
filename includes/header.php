@@ -4,6 +4,8 @@
     <title>filmDB</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet"> 
 </head>
 <body>
 <?php session_start(); ?>
@@ -17,7 +19,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse ">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="../login/logout.php">Logout</a></li>
+            <li><a href="../login/logout.php">Bem vindo, <?= $_SESSION['name']; ?> (Sair)</a></li>
           </ul>
         </div>
       </div>
