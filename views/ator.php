@@ -1,5 +1,4 @@
 <?php include '../includes/header.php'; ?>
-<?php require '../model/data.php'; ?>
 
 <nav class="navbar navbar-default">
       <div class="container">
@@ -14,7 +13,9 @@
         
     </div>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="../js/atores.js"></script>
-    <script>getDetalhes();</script>
+    <script type="text/javascript" src="../js/main.js"></script>
+    <script>getAtor();</script>
 </body>
 </html>
+
+<?php include '../includes/footer.php'; ?>

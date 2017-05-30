@@ -33,7 +33,7 @@
       </div>
     </div>
     <br>
-    <a href="../login/logout.php">Sair</a>
+    <footer><img src="../img/tmdb-logo.png"/></footer>
 
 
 <?php include '../includes/footer.php'; ?>

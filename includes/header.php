@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>filmDB</title>
     <link rel="stylesheet" href="https://bootswatch.com/paper/bootstrap.min.css" type="text/css" />
 </head>
 <body>
