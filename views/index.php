@@ -5,35 +5,25 @@
         header("location: ../login/index.php");    
     }
 ?>
-
-   <nav class="navbar navbar-default">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="index.php">Info</a>
-        </div>
-      </div>
-    </nav>
-
-    <div class="container">
-    	<div class="jumbotron">
-	    	<h3 class="text-center">info</h3>
+    
+   <section>
+    	<div class="">
+	    	<h3 class="">info</h3>
 	    	<form id="searchForm">
-	    	    <input type="text" class="form-control" id="searchText" placeholder="Procure por um filme ou personalidade...">
+	    	    <input type="text" class="" id="searchText" placeholder="Procure por um filme ou personalidade...">
 	    		<select id="searchParam">
                     <option value="movie">Filme</option>
                     <option value="person">Pessoa</option>
                 </select> 
 	    	</form>
 	    </div>
-    </div>
+    </section>
 
-    <div class="container">
-      <div id="output" class="row">
+    <div class="">
+      <div id="output" class="">
           
       </div>
     </div>
     <br>
-    <footer><img src="../img/tmdb-logo.png"/></footer>
-
 
 <?php include '../includes/footer.php'; ?>
