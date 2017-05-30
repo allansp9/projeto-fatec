@@ -9,16 +9,20 @@
    <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="index.php">MovieInfo</a>
+          <a class="navbar-brand" href="index.php">Info</a>
         </div>
       </div>
     </nav>
 
     <div class="container">
     	<div class="jumbotron">
-	    	<h3 class="text-center">Search For Any Movie</h3>
+	    	<h3 class="text-center">info</h3>
 	    	<form id="searchForm">
-	    		<input type="text" class="form-control" id="searchText" placeholder="Search Movies...">
+	    	    <input type="text" class="form-control" id="searchText" placeholder="Procure por um filme ou personalidade...">
+	    		<select id="searchParam">
+                    <option value="movie">Filme</option>
+                    <option value="person">Pessoa</option>
+                </select> 
 	    	</form>
 	    </div>
     </div>
