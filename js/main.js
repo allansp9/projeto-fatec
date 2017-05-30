@@ -105,20 +105,18 @@ function getFilme(){
         var movie_name = movie.title;
 
         var output =`
-        <div class="row">
-          <div class="col-md-4">
-            <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}">
-          </div>
-          <div class="col-md-8">
-            <h2>${movie.title}</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="well">
-            <h3>Plot</h3>
-            ${movie.overview}
-            <hr>
-          </div>
+        <div class="row ator">
+            <div class="col-sm-8 col-md-6">
+                <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}">
+            </div>
+            <div class="col-sm-4 col-md-6 text-center">
+                <h2>${movie.title}</h2>
+                <div class="well">
+                    <h3>Sumário</h3>
+                    ${movie.overview}
+                    <hr>
+                </div>
+            </div>
         </div>
       `;
         $('#movie').html(output);
@@ -152,22 +150,20 @@ function getAtor(){
         var ator = response;
 
         var output =`
-        <div class="row">
-          <div class="col-md-4">
-            <img src="https://image.tmdb.org/t/p/w500/${ator.profile_path}">
-          </div>
-          <div class="col-md-8">
-            <h2>${ator.name}</h2>
-          </div>
+        <div class="row ator">
+            <div class="col-md-6">
+                <img src="https://image.tmdb.org/t/p/w500/${ator.profile_path}">
+            </div>
+            <div class="col-md-6">
+                <h2 class="text-center">${ator.name}</h2>
+                <div class="well">
+                    <h1 class="text-center">Biografia</h1>
+                        ${ator.biography}
+                    <hr>
+                </div>
+            </div>
         </div>
-        <div class="row">
-          <div class="well">
-            <h1>Biografia</h1>
-            ${ator.biography}
-            <hr>
-          </div>
-        </div>
-        
+
         <h2>Fotos:</h2>
         `;
         $('#ator').html(output);
