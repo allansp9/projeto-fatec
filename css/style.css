@@ -1,0 +1,7 @@
+html{
+    box-sizing:border-box;
+}
+
+.section {
+    outline: 2px solid black;
+}
