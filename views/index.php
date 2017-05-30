@@ -24,21 +24,21 @@
    <!-- </div>-->
    <!-- <br>-->
     
-    <div class="container">
+    <section class="container">
     	<div class="jumbotron">
-	    	<h3 class="text-center">Search For Any Movie</h3>
+	    	<h1 class="text-center">filmDB</h1>
 	    	<form id="searchForm">
-	    		<input type="text" class="form-control" id="searchText" placeholder="Search Movies...">
+	    		<input type="text" class="form-control" id="searchText">
 	    		<select id="searchParam" class="form-control text-center">
                         <option value="movie">Filme</option>
                         <option value="person">Pessoa</option>
                     </select>
 	    	</form>
 	    </div>
-    </div>
 
-    <div class="container">
-      <div id="output" class="row"></div>
-</div>
+        <div class="container">
+          <div id="output" class="row"></div>
+        </div>
+    </section>
 
 <?php include '../includes/footer.php'; ?>

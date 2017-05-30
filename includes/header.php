@@ -9,7 +9,8 @@
 <?php session_start(); ?>
 <?php require '../login/db.php'; ?>
 
-<nav class="navbar navbar-default">
+<div class="wrapper">
+  <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
           <a class="navbar-brand" href="../views/index.php">filmDB</a>
