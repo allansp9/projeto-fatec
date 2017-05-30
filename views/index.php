@@ -7,6 +7,7 @@
 	    		<input type="text" class="form-control" id="searchText">
 	    		<select id="searchParam" class="form-control text-center">
                         <option value="movie">Filme</option>
+                        <option value="tv">TV Show</option>
                         <option value="person">Pessoa</option>
                     </select>
 	    	</form>

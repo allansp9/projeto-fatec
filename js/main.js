@@ -52,6 +52,23 @@ $(document).ready(function(){
                                 </div>
                             </div>
                         `;
+                    }else if (searchParam == "tv"){
+                        if (coisa.poster_path == null){
+                            poster = "<img src='../img/temp.jpg' alt='poster'/>";
+                        }
+                        else {
+                            poster = `<img src='https://image.tmdb.org/t/p/w500/${coisa.poster_path}' alt='poster' />`;
+                        }                        
+                        output += `
+                            <div class="col-md-3">
+                                <div class="text-center well">
+                                    <a onclick="getTvId('${coisa.id}')" href="#">
+                                        ${poster}
+                                        <h5>${coisa.name}</h5>
+                                     </a>
+                                </div>
+                            </div>
+                        `;
                     }
                     else{
                         if (coisa.profile_path == null){
@@ -130,10 +147,59 @@ function getFilme(){
         </div>
         `;
         $('#movie').html(output);
-        $.post('../model/data.php', {movie_id:movie_id, movie_poster:movie_poster, movie_name:movie_name}, function(data){
-            console.log(data);
-        });
 
+   
+    });
+}
+
+function getTvId(id){
+    sessionStorage.setItem('tvId', id);
+    window.location = '../views/tv.php?id='+id;
+    return false;
+}
+
+function getTv(){
+    var tvId = sessionStorage.getItem('tvId');
+    
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://api.themoviedb.org/3/tv/"+tvId+"?api_key=2657b90452d2f9814a444d1074c32cab&language=pt-BR",
+        "method": "GET",
+        "headers": {},
+        "data": "{}"
+    };
+
+    $.ajax(settings).done(function (response) {
+        var tv = response;
+        var tv_id = tv.id;
+        var tv_poster = tv.poster_path;
+        var tv_name = tv.name;
+        var tv_genres = tv.genres;
+        var output =`
+        <div class="row ator">
+            <div class="col-sm-8 col-md-6">
+                <img src="https://image.tmdb.org/t/p/w500/${tv.poster_path}">
+            </div>
+            <div class="col-sm-4 col-md-6 text-center">
+                <h2>${tv.name}</h2>
+                <div class="well">
+                    <h3>Sumário</h3>
+                    ${tv.overview}
+                    <hr>
+                    <p>Gêneros: 
+            `;
+        $.each(tv_genres, (index, genre) => {
+            output += `${genre.name}, `;
+        });
+        output +=`
+                </p>
+                </div>
+            </div>
+            <a class="btn btn-default" href="../views/index.php">Voltar</a>
+        </div>
+        `;
+        $('#tv').html(output);
    
     });
 }
