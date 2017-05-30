@@ -1,9 +1,10 @@
 <?php include '../includes/header.php'; ?>
+<?php require '../model/data.php'; ?>
 
 <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="index.html">MovieInfo</a>
+          <a class="navbar-brand" href="index.php">MovieInfo</a>
         </div>
       </div>
     </nav>
@@ -11,9 +12,10 @@
     <div class="container">
         <div id="movie" class="well"></div>
     <label>
-    <input type="checkbox" name="assistido" id="assistido">
+    <input type="checkbox" name="assistido" id="assistido" value="">
     Assistido
     </label>
+    <?php echo $watched; ?>
         
         
     </div>

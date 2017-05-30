@@ -4,19 +4,20 @@ $(document).ready(function(){
         var searchText = e.target.value;
         //getFilmes(searchText);
         e.preventDefault();
-        if ($.trim(searchText)!= ''){
-            var settings = {
-                    "async": true,
-                    "crossDomain": true,
-                    "url": "https://api.themoviedb.org/3/search/movie?api_key=2657b90452d2f9814a444d1074c32cab&language=en-US&query="+searchText+"&page=1&include_adult=false",
-                    "method": "GET",
-                    "headers": {},
-                    "data": "{}"
-            };
         
+        var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://api.themoviedb.org/3/search/movie?api_key=2657b90452d2f9814a444d1074c32cab&language=en-US&query="+searchText+"&page=1&include_adult=false",
+        "method": "GET",
+        "headers": {},
+        "data": "{}"
+        };
+        
+        if ($.trim(searchText)!= ''){
             $.ajax(settings).done(function(response) {
-                let movies = response.results;
-                let output = '';
+                var movies = response.results;
+                var output = '';
                 $.each(movies, (index, movie) => {
                     output += `
                         <div class="col-md-3">
@@ -32,23 +33,7 @@ $(document).ready(function(){
             });
         }
     });
-    
-    //adiciona o filme aos assistidos
-    $('#assistido').click(function(){
-        if ($(this).is(':checked')){
-            var watched = true;
-        }else {
-            watched = false;
-        }
-        $.post('../model/assistido.php', {watched:watched}, function(data){
-            console.log(data);
-        });
-        
-    });
-    
-    
-    
-    
+
 });
   
 function getFilmeId(id){
@@ -63,7 +48,7 @@ function getDetalhes(){
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "https://api.themoviedb.org/3/movie/"+movieId+"?api_key=2657b90452d2f9814a444d1074c32cab&language=pt-BR",
+        "url": "https://api.themoviedb.org/3/movie/"+movieId+"?api_key=2657b90452d2f9814a444d1074c32cab&language=en-US",
         "method": "GET",
         "headers": {},
         "data": "{}"
@@ -93,10 +78,41 @@ function getDetalhes(){
         </div>
       `;
         $('#movie').html(output);
-        $.post('../model/data-process.php', {movie_id:movie_id, movie_poster:movie_poster, movie_name:movie_name}, function(data){
+        $.post('../model/data.php', {movie_id:movie_id, movie_poster:movie_poster, movie_name:movie_name}, function(data){
             console.log(data);
         });
 
    
     });
 }
+
+//adiciona o filme aos assistidos
+$('#assistido').click(function(){
+    var movieId = sessionStorage.getItem('movieId');
+    
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://api.themoviedb.org/3/movie/"+movieId+"?api_key=2657b90452d2f9814a444d1074c32cab&language=en-US",
+        "method": "GET",
+        "headers": {},
+        "data": "{}"
+    };
+    
+    $.ajax(settings).done(function (response) {
+        var movie = response;
+        var movie_id = movie.id;
+        var movie_poster = movie.poster_path;
+        var movie_name = movie.title;
+        var watched;
+        if ($('#assistido').is(':checked')){
+            watched = true;
+        }
+        else{
+            watched = false;
+        }
+        $.post('../model/data.php', {movie_id:movie_id, movie_poster:movie_poster, movie_name:movie_name, watched:watched}, function(data){
+            console.log(data);
+        });
+    });
+});

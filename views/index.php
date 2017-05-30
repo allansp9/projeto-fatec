@@ -9,7 +9,7 @@
    <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="index.html">MovieInfo</a>
+          <a class="navbar-brand" href="index.php">MovieInfo</a>
         </div>
       </div>
     </nav>

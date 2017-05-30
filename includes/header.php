@@ -6,4 +6,4 @@
 </head>
 <body>
 <?php session_start(); ?>
-<?php require '../model/db.php'; ?>
+<?php require '../login/db.php'; ?>
