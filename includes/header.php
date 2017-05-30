@@ -12,14 +12,12 @@
 <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">filmDB</a>
+          <a class="navbar-brand" href="../views/index.php">filmDB</a>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+        <div id="navbar" class="collapse navbar-collapse ">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../login/logout.php">Logout</a></li>
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
     </nav>

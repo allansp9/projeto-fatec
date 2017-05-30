@@ -2,6 +2,27 @@ html{
     box-sizing:border-box;
 }
 
-.section {
-    outline: 2px solid black;
+section {
+    margin-top:250px;
+}
+
+section.container{
+    
+}
+
+select#searchParam{
+    margin:10px auto;
+    width:300px;
+}
+
+h1.filmdb{
+    font-size: 60px;
+}
+
+#output .col-md-3 .well{
+    height:390px;
+}
+
+#output .col-md-3 img{
+    height:240px;
 }

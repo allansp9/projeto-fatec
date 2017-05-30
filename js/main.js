@@ -13,8 +13,12 @@ $(document).ready(function(){
         }
 
         var searchText = e.target.value;
+        console.log(searchText);
         var searchParam = $('#searchParam').val();
-        e.preventDefault();
+       // e.preventDefault();
+        // $('button').click(function(e){
+        //     e.preventDefault();
+        // });
         
         var settings = {
         "async": true,
@@ -33,10 +37,11 @@ $(document).ready(function(){
                     if (searchParam == "movie"){
                         output += `
                             <div class="col-md-3">
-                                <div class="well text-center">
-                                    <img src="https://image.tmdb.org/t/p/w154/${coisa.poster_path}">
-                                    <h5>${coisa.title}</h5>
-                                    <a onclick="getFilmeId('${coisa.id}')" class="btn btn-primary" href="#">Movie Details</a>
+                                <div class="text-center well">
+                                    <a onclick="getFilmeId('${coisa.id}')" href="#">
+                                        <img src="https://image.tmdb.org/t/p/w500/${coisa.poster_path}">
+                                        <h5>${coisa.title}</h5>
+                                     </a>
                                 </div>
                             </div>
                         `;
@@ -44,10 +49,11 @@ $(document).ready(function(){
                     else{
                         output += `
                             <div class="col-md-3">
-                                <div class="well text-center">
-                                    <img src="https://image.tmdb.org/t/p/w154/${coisa.profile_path}">
-                                    <h5>${coisa.name}</h5>
-                                    <a onclick="getAtorId('${coisa.id}')" class="btn btn-primary" href="#">Movie Details</a>
+                                <div class="text-center well">
+                                    <a onclick="getAtorId('${coisa.id}')" href="#">
+                                        <img src="https://image.tmdb.org/t/p/w500/${coisa.profile_path}">
+                                        <h5>${coisa.name}</h5>
+                                    </a>
                                 </div>
                             </div>
                         `;
@@ -57,18 +63,6 @@ $(document).ready(function(){
                 $('#output').html(output);
             });
         }
-    });
-    
-    $('#searchText').change(function(){
-        // if ($(this).val() === ''){
-        //     console.log("condeu");
-        //     $('#output').hide();
-        // }
-        // else{
-        //     $('#output').show();
-        //     console.log("mosto");
-        // }
-        console.log('are ya working?');
     });
 
 });
@@ -85,7 +79,7 @@ function getFilme(){
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "https://api.themoviedb.org/3/movie/"+movieId+"?api_key=2657b90452d2f9814a444d1074c32cab&language=en-US",
+        "url": "https://api.themoviedb.org/3/movie/"+movieId+"?api_key=2657b90452d2f9814a444d1074c32cab&language=pt-BR",
         "method": "GET",
         "headers": {},
         "data": "{}"
@@ -135,7 +129,7 @@ function getAtor(){
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "https://api.themoviedb.org/3/person/"+atorId+"?api_key=2657b90452d2f9814a444d1074c32cab&language=en-US&append_to_response=images",
+        "url": "https://api.themoviedb.org/3/person/"+atorId+"?api_key=2657b90452d2f9814a444d1074c32cab",
         "method": "GET",
         "headers": {},
         "data": "{}"
@@ -163,19 +157,6 @@ function getAtor(){
         
         <h2>Fotos:</h2>
         `;
-        var caminho = ator.images.profiles;
-        for (var i = 0; i < 8; i++) {
-            output += `
-                    <div class="col-md-3">
-                        <div class="well text-center">
-                            <a href="https://image.tmdb.org/t/p/original${caminho[i].file_path}" target="_blank" class="thumbnail">
-                                <img src="https://image.tmdb.org/t/p/original${caminho[i].file_path}" alt="${ator.name}">
-                            </a>    
-                         </div>
-                    </div>
-            
-                `
-        }
         $('#ator').html(output);
         //$('#ator').append(fotos);
     });
